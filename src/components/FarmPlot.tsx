@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Sprout, TrendingUp, Lock, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
+import { useNeonSecretYield } from "@/hooks/useContract";
+import { useAccount } from "wagmi";
 
 interface FarmPlotProps {
   name: string;
@@ -11,10 +13,13 @@ interface FarmPlotProps {
   userStaked?: string;
   rewards?: string;
   isEncrypted?: boolean;
+  poolId?: number;
 }
 
-export const FarmPlot = ({ name, token, apy, tvl, userStaked, rewards, isEncrypted = true }: FarmPlotProps) => {
+export const FarmPlot = ({ name, token, apy, tvl, userStaked, rewards, isEncrypted = true, poolId = 0 }: FarmPlotProps) => {
   const [showEncrypted, setShowEncrypted] = useState(true);
+  const { address, isConnected } = useAccount();
+  const { stake, unstake, claimRewards, isPending } = useNeonSecretYield();
   
   return (
     <div className="farm-plot group cursor-pointer">
@@ -93,14 +98,26 @@ export const FarmPlot = ({ name, token, apy, tvl, userStaked, rewards, isEncrypt
         <Button 
           variant="outline" 
           className="neon-border bg-transparent hover:bg-primary/20 transition-all font-tech"
+          disabled={!isConnected || isPending}
+          onClick={() => {
+            if (isConnected && poolId !== undefined) {
+              stake(poolId, "1000000000000000000"); // 1 ETH in wei
+            }
+          }}
         >
-          Stake
+          {isPending ? "Processing..." : "Stake"}
         </Button>
         <Button 
           variant="outline"
           className="border-secondary text-secondary hover:bg-secondary/20 transition-all font-tech"
+          disabled={!isConnected || isPending}
+          onClick={() => {
+            if (isConnected && poolId !== undefined) {
+              claimRewards(poolId);
+            }
+          }}
         >
-          Harvest
+          {isPending ? "Processing..." : "Harvest"}
         </Button>
       </div>
       

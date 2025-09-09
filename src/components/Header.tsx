@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { Wallet, Zap, Shield } from "lucide-react";
+import { Zap, Shield } from "lucide-react";
 import woodenBanner from "@/assets/wooden-banner.jpg";
+import { WalletConnect } from "./WalletConnect";
 
 export const Header = () => {
   return (
@@ -48,10 +48,7 @@ export const Header = () => {
             </div>
           </div>
           
-          <Button className="neon-border bg-transparent hover:bg-primary/20 transition-all">
-            <Wallet className="w-4 h-4 mr-2" />
-            <span className="font-tech">Connect Wallet</span>
-          </Button>
+          <WalletConnect />
         </div>
       </div>
     </header>

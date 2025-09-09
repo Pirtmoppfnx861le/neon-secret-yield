@@ -114,6 +114,7 @@ const Index = () => {
                 userStaked={pool.userStaked}
                 rewards={pool.rewards}
                 isEncrypted={true}
+                poolId={index}
               />
             ))}
           </div>
