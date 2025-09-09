@@ -4,7 +4,7 @@ import { sepolia, mainnet, polygon, arbitrum } from 'wagmi/chains';
 // Configure supported chains for FHE network
 export const config = getDefaultConfig({
   appName: 'Neon Secret Yield',
-  projectId: import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || 'your-project-id',
+  projectId: import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || 'placeholder-project-id-for-build',
   chains: [sepolia, mainnet, polygon, arbitrum],
   ssr: false, // If your dApp uses server side rendering (SSR)
 });
