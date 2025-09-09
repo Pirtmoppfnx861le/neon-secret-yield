@@ -19,13 +19,4 @@
       ]
     }
   ],
-  "env": {
-    "VITE_WALLETCONNECT_PROJECT_ID": "@walletconnect_project_id",
-    "VITE_CONTRACT_ADDRESS_SEPOLIA": "@contract_address_sepolia",
-    "VITE_CONTRACT_ADDRESS_MAINNET": "@contract_address_mainnet",
-    "VITE_CONTRACT_ADDRESS_POLYGON": "@contract_address_polygon",
-    "VITE_CONTRACT_ADDRESS_ARBITRUM": "@contract_address_arbitrum",
-    "VITE_VERIFIER_ADDRESS": "@verifier_address",
-    "VITE_TREASURY_ADDRESS": "@treasury_address"
-  }
 }
